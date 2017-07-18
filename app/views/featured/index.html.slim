@@ -1,0 +1,13 @@
+= render 'layouts/navbar', active: :featured
+
+.ui.container
+  h1 Featured
+
+  h2 Articles
+  .ui.styled.accordion
+    - @articles.each do |a|
+      .title
+        .dropdown.icon
+        = a.headline
+      .content
+        p = a.body
