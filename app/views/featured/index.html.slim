@@ -10,4 +10,16 @@
         .dropdown.icon
         = a.headline
       .content
-        p = a.body
+        = form_for a, html: {class: 'ui form'} do |f|
+          .field
+            = f.label :headline
+            = f.text_field :headline
+          .field
+            = f.label :author
+            = f.text_field :author
+          .field
+            = f.label :body
+            = f.text_area :body
+          .field
+            = f.submit class: 'ui button primary'
+
