@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'featured#index'
 
   get '/featured', to: 'featured#index'
+  put '/featured/update_videos', to: 'featured#update_videos'
 
   resources :articles, only: %i[update]
 

@@ -12,4 +12,5 @@
 #
 
 class Video < ApplicationRecord
+  include Featurable
 end

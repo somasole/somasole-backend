@@ -5,6 +5,7 @@ class CreateVideos < ActiveRecord::Migration[5.1]
       t.text :description
       t.integer :duration
       t.string :title
+      t.boolean :featured, default: false
 
       t.timestamps
     end

@@ -23,3 +23,12 @@
           .field
             = f.submit class: 'ui button primary'
 
+  h2 Videos
+  .ui.segment(style="width: 600px;")
+    = form_tag featured_update_videos_path, method: :put, class: 'ui form'
+      .field
+        = select_tag 'featured[0]', options_from_collection_for_select(@videos, 'id', 'title', @videos.featured.first.id), class: 'ui dropdown'
+      .field
+        = select_tag 'featured[1]', options_from_collection_for_select(@videos, 'id', 'title', @videos.featured.last.id), class: 'ui dropdown'
+      .field
+        = submit_tag 'Update Videos', class: 'ui button primary'

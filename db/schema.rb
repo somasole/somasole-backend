@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170719004118) do
     t.text "description"
     t.integer "duration"
     t.string "title"
+    t.boolean "featured", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
