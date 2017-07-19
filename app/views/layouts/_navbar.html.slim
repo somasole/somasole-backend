@@ -3,3 +3,5 @@
     = image_tag 'logo.png'
   = link_to featured_path, class: "item #{'active' if active == :featured}"
     | Featured
+  = link_to videos_path, class: "item #{'active' if active == :videos}"
+    | Videos
