@@ -9,6 +9,7 @@
         .dropdown.icon
         = w.name
       .content
+        .ui.dividing.header Workout
         = form_for w, html: {class: 'ui form'} do |f|
           .field
             = f.label :name
@@ -26,3 +27,5 @@
             = render('tags', workout: w)
           .field
             = f.submit class: 'ui button primary'
+
+        = render('circuits', workout: w)

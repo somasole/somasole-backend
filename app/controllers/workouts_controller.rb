@@ -2,6 +2,7 @@ class WorkoutsController < ApplicationController
   def index
     @workouts = Workout.all
     @tags = Tag.all
+    @setups = Setup.all
   end
 
   def update

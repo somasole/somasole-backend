@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :videos, only: %i[index update]
 
   resources :workouts, only: %i[index update]
+
+  resources :circuits, only: %i[update]
 end
