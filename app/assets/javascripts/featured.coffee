@@ -2,5 +2,13 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+class Featured
+  constructor: ->
+    console.log 'init: Featured'
+
+    $('.ui.accordion').accordion()
+
+
 $(document).on 'turbolinks:load', ->
-  $('.ui.accordion').accordion()
+  if $(document.body).hasClass('featured')
+    new Featured()
