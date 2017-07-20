@@ -13,5 +13,5 @@
 class Circuit < ApplicationRecord
   belongs_to :workout
   belongs_to :setup
-  has_many :movements
+  has_many :movements, dependent: :destroy
 end

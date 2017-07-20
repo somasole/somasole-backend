@@ -1,12 +1,18 @@
 .ui.dividing.header Circuits
 .field
   .ui.styled.accordion
-    - workout.circuits.each_with_index do |c, i|
+    - workout.circuits.order(:id).each_with_index do |c, i|
       .title
         .dropdown.icon
         = "Circuit #{i + 1}"
       .content
-        = form_for c, html: {class: 'ui form'} do |f|
+        = form_for [workout, c], html: {class: 'ui form'} do |f|
           .field
             = label_tag 'setup', 'Setup'
-            = select_tag 'setup', options_from_collection_for_select(@setups, 'id', 'legacy_index', c.setup.id), class: 'ui dropdown'
+            = select_tag 'setup', options_from_collection_for_select(@setups, 'id', 'name', c.setup.id), class: 'ui dropdown'
+          .field
+            = f.label :sets
+            = f.text_field :sets, type: 'number'
+          .field
+            = f.submit class: 'ui button primary'
+        = render('workouts/movements', workout: workout, circuit: c)

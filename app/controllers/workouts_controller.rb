@@ -1,6 +1,6 @@
 class WorkoutsController < ApplicationController
   def index
-    @workouts = Workout.all
+    @workouts = Workout.all.order(:name)
     @tags = Tag.all
     @setups = Setup.all
   end
