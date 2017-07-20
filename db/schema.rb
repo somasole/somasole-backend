@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719180552) do
+ActiveRecord::Schema.define(version: 20170720051300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,46 @@ ActiveRecord::Schema.define(version: 20170719180552) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "circuits", force: :cascade do |t|
+    t.bigint "workout_id"
+    t.bigint "setup_id"
+    t.integer "sets"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["setup_id"], name: "index_circuits_on_setup_id"
+    t.index ["workout_id"], name: "index_circuits_on_workout_id"
+  end
+
+  create_table "movements", force: :cascade do |t|
+    t.bigint "circuit_id"
+    t.integer "time"
+    t.text "description"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["circuit_id"], name: "index_movements_on_circuit_id"
+  end
+
+  create_table "setups", force: :cascade do |t|
+    t.integer "length"
+    t.integer "legacy_index"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags_workouts", id: false, force: :cascade do |t|
+    t.bigint "workout_id", null: false
+    t.bigint "tag_id", null: false
+    t.index ["tag_id", "workout_id"], name: "index_tags_workouts_on_tag_id_and_workout_id"
+    t.index ["workout_id", "tag_id"], name: "index_tags_workouts_on_workout_id_and_tag_id"
+  end
+
   create_table "videos", force: :cascade do |t|
     t.string "youtube_id"
     t.text "description"
@@ -33,31 +73,17 @@ ActiveRecord::Schema.define(version: 20170719180552) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "workout_circuits", force: :cascade do |t|
-    t.bigint "workout_id"
-    t.integer "sets"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["workout_id"], name: "index_workout_circuits_on_workout_id"
-  end
-
-  create_table "workout_tags", force: :cascade do |t|
-    t.bigint "workout_id"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["workout_id"], name: "index_workout_tags_on_workout_id"
-  end
-
-  create_table "workout_workouts", force: :cascade do |t|
+  create_table "workouts", force: :cascade do |t|
     t.string "name"
     t.integer "time"
     t.integer "intensity"
     t.text "description"
+    t.boolean "featured", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "workout_circuits", "workout_workouts", column: "workout_id"
-  add_foreign_key "workout_tags", "workout_workouts", column: "workout_id"
+  add_foreign_key "circuits", "setups"
+  add_foreign_key "circuits", "workouts"
+  add_foreign_key "movements", "circuits"
 end

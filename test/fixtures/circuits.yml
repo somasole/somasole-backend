@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: circuits
+#
+#  id         :integer          not null, primary key
+#  workout_id :integer
+#  setup_id   :integer
+#  sets       :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  workout: one
+  sets: 1
+
+two:
+  workout: two
+  sets: 1

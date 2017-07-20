@@ -1,17 +1,20 @@
 # == Schema Information
 #
-# Table name: videos
+# Table name: movements
 #
 #  id          :integer          not null, primary key
-#  youtube_id  :string
+#  circuit_id  :integer
+#  time        :integer
 #  description :text
-#  duration    :integer
 #  title       :string
-#  featured    :boolean          default(FALSE)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
-class Video < ApplicationRecord
-  include Featurable
+require 'test_helper'
+
+class MovementTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end
