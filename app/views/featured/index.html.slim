@@ -23,7 +23,7 @@
           .field
             = f.submit class: 'ui button primary'
 
-  h2 Videos
+  h2 Featured Videos
   .ui.segment(style="width: 600px;")
     = form_tag featured_update_videos_path, method: :put, class: 'ui form'
       .field
@@ -32,3 +32,11 @@
         = select_tag 'featured[1]', options_from_collection_for_select(@videos, 'id', 'title', @videos.featured.last.id), class: 'ui dropdown'
       .field
         = submit_tag 'Update Videos', class: 'ui button primary'
+
+  h2 Featured Workout
+  .ui.segment(style="width: 600px;")
+    = form_tag featured_update_workout_path, method: :put, class: 'ui form'
+      .field
+        = select_tag 'workout', options_from_collection_for_select(@workouts, 'id', 'name', @workouts.featured.first.id), class: 'ui dropdown'
+      .field
+        = submit_tag 'Update Workout', class: 'ui button primary'
