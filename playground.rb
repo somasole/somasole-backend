@@ -25,7 +25,7 @@ h = JSON.parse File.read 'firebase.json'
 TAGS = ['Upper Body', 'Core', 'Lower Body', 'Total Body'].freeze
 
 h['workouts']['public'].each do |k, v|
-  workout = Workout.create! v.slice(%i[description intensity time]).merge(name: k)
+  workout = Workout.create! v.slice('description', 'intensity', 'time').merge(name: k)
 
   v['tags'].each { |tag_num| workout.tags.append Tag.find_or_create_by! name: TAGS[tag_num] }
 

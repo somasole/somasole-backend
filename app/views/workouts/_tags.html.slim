@@ -1,0 +1,7 @@
+= label_tag 'tags', 'Tags'
+.inline.fields
+  - @tags.each_with_index do |t, i|
+    .field
+      .ui.checkbox
+        = check_box_tag "tags[#{i}]", t.id, workout.tags.include?(t)
+        label = t.name
