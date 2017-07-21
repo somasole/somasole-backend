@@ -17,4 +17,9 @@
             = f.label :description
             = f.text_area :description
           .field
-            = f.submit class: 'ui button primary'
+            = f.submit class: 'ui button primary', data: { confirm: 'Are you sure you want to update this movement?' }
+            = link_to 'Delete Movement',
+                        workout_circuit_movement_path(workout, circuit, m),
+                        method: :delete,
+                        data: {confirm: 'Are you sure you want to delete this movement?'},
+                        class: 'ui button negative'

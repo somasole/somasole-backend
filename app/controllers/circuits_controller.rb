@@ -9,6 +9,14 @@ class CircuitsController < ApplicationController
     redirect_to workouts_path
   end
 
+  def destroy
+    Circuit.find(params[:id]).destroy!
+
+    redirect_to workouts_path
+  rescue
+    redirect_to workouts_path
+  end
+
   private
 
   def circuit_params

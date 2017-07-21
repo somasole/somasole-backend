@@ -23,4 +23,9 @@
             = f.label :description
             = f.text_area :description
           .field
-            = f.submit class: 'ui button primary'
+            = f.submit class: 'ui button primary', data: { confirm: 'Are you sure you want to update this video?' }
+            = link_to 'Delete Video',
+                        video_path(v),
+                        method: :delete,
+                        data: {confirm: 'Are you sure you want to delete this video?'},
+                        class: 'ui button negative'

@@ -7,6 +7,14 @@ class ArticlesController < ApplicationController
     redirect_to featured_path
   end
 
+  def destroy
+    Article.find(params[:id]).destroy!
+
+    redirect_to featured_path
+  rescue
+    redirect_to featured_path
+  end
+
   private
 
   def article_params

@@ -14,5 +14,11 @@
             = f.label :sets
             = f.text_field :sets, type: 'number'
           .field
-            = f.submit class: 'ui button primary'
+            = f.submit class: 'ui button primary', data: { confirm: 'Are you sure you want to update this circuit?' }
+            = link_to 'Delete Circuit',
+                        workout_circuit_path(workout, c),
+                        method: :delete,
+                        data: {confirm: 'Are you sure you want to delete this circuit?'},
+                        class: 'ui button negative'
+
         = render('workouts/movements', workout: workout, circuit: c)
