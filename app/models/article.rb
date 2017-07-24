@@ -12,4 +12,5 @@
 
 class Article < ApplicationRecord
   include Imageable::ImageUploader::Attachment.new(:text_image)
+  include Imageable::ImageUploader::Attachment.new(:plain_image)
 end

@@ -10,9 +10,16 @@
     = f.text_area :body
   .field
     = f.label :text_image
-    = image_tag article.text_image_url || '', height: 200, width: 325
+    - if article.text_image_url.present?
+      = image_tag article.text_image_url, height: 200, width: 325
     = f.hidden_field :text_image, value: article.cached_text_image_data
     = f.file_field :text_image
+  .field
+    = f.label :plain_image
+    - if article.plain_image_url.present?
+      = image_tag article.plain_image_url, height: 200, width: 200
+    = f.hidden_field :plain_image, value: article.cached_plain_image_data
+    = f.file_field :plain_image
   .field
     = f.submit class: 'ui button primary'
     - if article.id != nil

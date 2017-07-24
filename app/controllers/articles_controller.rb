@@ -30,6 +30,6 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(%i[headline author body text_image])
+    params.require(:article).permit(%i[headline author body text_image plain_image])
   end
 end
