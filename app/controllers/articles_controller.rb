@@ -1,4 +1,8 @@
 class ArticlesController < ApplicationController
+  def show
+    @article = Article.find params[:id]
+  end
+
   def new
     @article = Article.new
   end
@@ -7,8 +11,8 @@ class ArticlesController < ApplicationController
     Article.create! article_params
 
     redirect_to featured_path
-  # rescue
-  #   redirect_back
+  rescue
+    redirect_back
   end
 
   def update

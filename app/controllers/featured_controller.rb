@@ -1,8 +1,12 @@
 class FeaturedController < ApplicationController
   def index
     @articles = Article.all
+
     @videos = Video.all
+    @featured_videos = @videos.featured
+
     @workouts = Workout.all
+    @featured_workout = @workouts.featured.first
   end
 
   def update_videos
