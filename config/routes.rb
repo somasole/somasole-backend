@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   put '/featured/update_videos', to: 'featured#update_videos'
   put '/featured/update_workout', to: 'featured#update_workout'
 
-  resources :articles, only: %i[update destroy]
+  resources :articles, only: %i[new create update destroy]
 
   resources :videos, only: %i[index update destroy]
 

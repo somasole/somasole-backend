@@ -11,4 +11,5 @@
 #
 
 class Article < ApplicationRecord
+  include Imageable::ImageUploader::Attachment.new(:text_image)
 end

@@ -1,4 +1,16 @@
 class ArticlesController < ApplicationController
+  def new
+    @article = Article.new
+  end
+
+  def create
+    Article.create! article_params
+
+    redirect_to featured_path
+  # rescue
+  #   redirect_back
+  end
+
   def update
     Article.find(params[:id]).update! article_params
 
@@ -18,6 +30,6 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(%i[headline author body])
+    params.require(:article).permit(%i[headline author body text_image])
   end
 end

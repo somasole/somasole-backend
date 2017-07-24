@@ -1,0 +1,7 @@
+= render 'layouts/navbar', active: nil
+
+.ui.container
+  h2 New Article
+  .ui.grid
+    .column.nine.wide
+      = render 'articles/form', article: @article
