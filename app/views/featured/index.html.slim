@@ -3,7 +3,9 @@
 .ui.container
   h1 Featured
 
-  h2 Articles
+  h2(style='display: inline-block;') Articles
+  = link_to new_article_path, class: 'ui circular icon button', style: 'margin-top: 10px; margin-left: 10px; display: inline-block;' do
+    i.plus.icon
   .ui.styled.accordion
     - @articles.each do |a|
       .title
@@ -11,8 +13,6 @@
         = a.headline
       .content
         = render 'articles/form', article: a
-  = link_to new_article_path, class: 'ui circular icon button', style: 'margin-top: 10px;' do
-    i.plus.icon
 
   h2 Featured Videos
   .ui.segment(style="width: 600px;")

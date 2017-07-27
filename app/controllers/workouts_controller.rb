@@ -5,10 +5,28 @@ class WorkoutsController < ApplicationController
     @setups = Setup.all
   end
 
+  def new
+    @workout = Workout.new
+    @tags = Tag.all
+  end
+
+  def create
+    Workout.transaction do
+      w = Workout.create! workout_params
+      w.tags = Tag.find params[:tags].values
+    end
+
+    redirect_to workouts_path
+  rescue
+    redirect_back
+  end
+
   def update
-    w = Workout.find(params[:id])
-    w.tags = Tag.find params[:tags].values
-    w.update! workout_params
+    Workout.transaction do
+      w = Workout.find(params[:id])
+      w.tags = Tag.find params[:tags].values
+      w.update! workout_params
+    end
 
     redirect_to workouts_path
   rescue
@@ -26,6 +44,6 @@ class WorkoutsController < ApplicationController
   private
 
   def workout_params
-    params.require(:workout).permit(%i[name time intensity description])
+    params.require(:workout).permit(%i[name time intensity description image])
   end
 end

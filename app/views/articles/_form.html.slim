@@ -22,7 +22,7 @@
     = f.file_field :plain_image
   .field
     = f.submit class: 'ui button primary'
-    - if article.id != nil
+    - if article.id.present?
       = link_to 'Delete Article',
               article_path(article),
               method: :delete,

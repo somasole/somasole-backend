@@ -1,7 +1,9 @@
 = render 'layouts/navbar', active: :workouts
 
 .ui.container
-  h1 Workouts
+  h1(style='display: inline-block;') Workouts
+  = link_to new_workout_path, class: 'ui circular icon button', style: 'margin-top: 10px; margin-left: 10px; display: inline-block;' do
+    i.plus.icon
 
   .ui.styled.accordion
     - @workouts.each do |w|
@@ -10,27 +12,6 @@
         = w.name
       .content
         .ui.dividing.header Workout
-        = form_for w, html: {class: 'ui form'} do |f|
-          .field
-            = f.label :name
-            = f.text_field :name
-          .field
-            = f.label :time
-            = f.text_field :time
-          .field
-            = f.label :intensity
-            = f.text_field :intensity, type: 'number'
-          .field
-            = f.label :description
-            = f.text_area :description
-          .field
-            = render('tags', workout: w)
-          .field
-            = f.submit class: 'ui button primary', data: { confirm: 'Are you sure you want to update this workout?' }
-            = link_to 'Delete Workout',
-                        workout_path(w),
-                        method: :delete,
-                        data: {confirm: 'Are you sure you want to delete this workout?'},
-                        class: 'ui button negative'
+        = render('workouts/form', workout: w)
 
         = render('circuits', workout: w)
