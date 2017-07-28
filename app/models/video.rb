@@ -14,4 +14,5 @@
 
 class Video < ApplicationRecord
   include Featurable
+  include Prettyable
 end
