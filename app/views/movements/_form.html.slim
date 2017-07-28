@@ -1,0 +1,19 @@
+= form_for [workout, circuit, movement], html: {class: 'ui form'} do |f|
+  = hidden_field_tag :authenticity_token, form_authenticity_token
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :time
+    = f.text_field :time, type: 'number'
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.submit class: 'ui button primary'
+    - if movement.id.present?
+      = link_to 'Delete Movement',
+                workout_circuit_movement_path(workout, circuit, movement),
+                method: :delete,
+                data: {confirm: 'Are you sure you want to delete this movement?'},
+                class: 'ui button negative'

@@ -1,0 +1,18 @@
+= form_for [workout, circuit], html: {class: 'ui form'} do |f|
+  .field
+    = label_tag 'setup', 'Setup'
+    = select_tag 'setup', options_from_collection_for_select(@setups, 'id', 'name', circuit.setup&.id), class: 'ui dropdown'
+  .field
+    = f.label :sets
+    = f.text_field :sets, type: 'number'
+  .field
+    = f.submit class: 'ui button primary'
+    - if circuit.id.present?
+      = link_to 'Delete Circuit',
+              workout_circuit_path(workout, circuit),
+              method: :delete,
+              data: {confirm: 'Are you sure you want to delete this circuit?'},
+              class: 'ui button negative'
+
+- if circuit.id.present?
+  = render('workouts/movements', workout: workout, circuit: circuit)

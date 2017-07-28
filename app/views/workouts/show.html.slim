@@ -1,0 +1,8 @@
+= render 'layouts/navbar', active: nil
+
+.ui.container
+  h2
+    = @workout.name
+  .ui.grid
+    .column.nine.wide
+      = render 'workouts/form', workout: @workout

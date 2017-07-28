@@ -11,7 +11,7 @@
         .dropdown.icon
         = w.name
       .content
-        .ui.dividing.header Workout
-        = render('workouts/form', workout: w)
+        .ui.dividing.header
+          = link_to w.name, workout_path(w)
 
-        = render('circuits', workout: w)
+        = render('workouts/form', workout: w)

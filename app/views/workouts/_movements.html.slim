@@ -1,25 +1,16 @@
 .ui.dividing.header Movements
 .field
   .ui.styled.accordion
-    - circuit.movements.order(:id).each_with_index do |m, i|
+    - circuit.movements.each_with_index do |m, i|
       .title
         .dropdown.icon
         = "Movement #{i + 1}"
       .content
-        = form_for [workout, circuit, m], html: {class: 'ui form'} do |f|
-          .field
-            = f.label :title
-            = f.text_field :title
-          .field
-            = f.label :time
-            = f.text_field :time, type: 'number'
-          .field
-            = f.label :description
-            = f.text_area :description
-          .field
-            = f.submit class: 'ui button primary', data: { confirm: 'Are you sure you want to update this movement?' }
-            = link_to 'Delete Movement',
-                        workout_circuit_movement_path(workout, circuit, m),
-                        method: :delete,
-                        data: {confirm: 'Are you sure you want to delete this movement?'},
-                        class: 'ui button negative'
+        = render('movements/form', workout: workout, circuit: circuit, movement: m)
+
+    .title
+      i.blue.add.circle.icon
+      | New Movement
+    .content
+      = render('movements/form', workout: workout, circuit: circuit, movement: Movement.new)
+

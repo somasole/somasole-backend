@@ -17,5 +17,5 @@ class Workout < ApplicationRecord
   include Imageable::ImageUploader::Attachment.new(:image)
 
   has_and_belongs_to_many :tags
-  has_many :circuits, dependent: :destroy
+  has_many :circuits, -> { order :id }, dependent: :destroy
 end

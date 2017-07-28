@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   resources :videos, only: %i[index update destroy]
 
-  resources :workouts, only: %i[index new create update destroy] do
-    resources :circuits, only: %i[update destroy] do
-      resources :movements, only: %i[update destroy]
+  resources :workouts, only: %i[index show new create update destroy] do
+    resources :circuits, only: %i[create update destroy] do
+      resources :movements, only: %i[create update destroy]
     end
   end
 end
