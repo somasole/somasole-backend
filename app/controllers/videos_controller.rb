@@ -3,6 +3,18 @@ class VideosController < ApplicationController
     @videos = Video.all
   end
 
+  def new
+    @video = Video.new
+  end
+
+  def create
+    Video.create! video_params
+
+    redirect_to videos_path
+  rescue
+    redirect_to videos_path
+  end
+
   def update
     Video.find(params[:id]).update! video_params
 

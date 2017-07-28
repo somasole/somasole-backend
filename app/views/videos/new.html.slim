@@ -1,0 +1,7 @@
+= render 'layouts/navbar', active: :nil
+
+.ui.container
+  h1 New Video
+  .ui.grid
+    .column.nine.wide
+      = render('videos/form', video: @video)

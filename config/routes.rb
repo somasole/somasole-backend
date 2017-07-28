@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :articles, only: %i[show new create update destroy]
 
-  resources :videos, only: %i[index update destroy]
+  resources :videos, only: %i[index new create update destroy]
 
   resources :workouts, only: %i[index show new create update destroy] do
     resources :circuits, only: %i[create update destroy] do

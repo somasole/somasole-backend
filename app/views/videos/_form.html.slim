@@ -1,0 +1,21 @@
+= form_for video, html: {class: 'ui form'} do |f|
+  .field
+    = f.label :youtube_id
+    = f.text_field :youtube_id
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :duration
+    = f.text_field :duration, type: 'number'
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.submit class: 'ui button primary'
+    - if video.id.present?
+      = link_to 'Delete Video',
+              video_path(video),
+              method: :delete,
+              data: {confirm: 'Are you sure you want to delete this video?'},
+              class: 'ui button negative'
