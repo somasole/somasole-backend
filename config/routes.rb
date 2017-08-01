@@ -14,4 +14,14 @@ Rails.application.routes.draw do
       resources :movements, only: %i[create update destroy]
     end
   end
+
+  namespace :api do
+    namespace :v1 do
+      get '/featured', to: 'featured#index'
+
+      resources :videos, only: :index
+
+      resources :workouts, only: :index
+    end
+  end
 end
