@@ -1,9 +1,17 @@
 .ui.menu
-  = link_to root_path, class: 'item'
+  = link_to root_path, class: 'item' do
     = image_tag 'logo.png'
-  = link_to featured_path, class: "item #{'active' if active == :featured}"
+  = link_to featured_path, class: "item #{'active' if active == :featured}" do
+    i.home.icon
     | Featured
-  = link_to videos_path, class: "item #{'active' if active == :videos}"
+  = link_to videos_path, class: "item #{'active' if active == :videos}" do
+    i.video.play.icon
     | Videos
-  = link_to workouts_path, class: "item #{'active' if active == :workouts}"
+  = link_to workouts_path, class: "item #{'active' if active == :workouts}" do
+    i.child.icon
     | Workouts
+
+  .right.menu
+    = link_to destroy_admin_session_path, class: 'item', method: :delete do
+      i.sign.out.icon
+      | Logout

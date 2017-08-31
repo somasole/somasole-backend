@@ -1,4 +1,4 @@
-class Api::V1::FeaturedController < ApplicationController
+class Api::V1::FeaturedController < Api::V1::ApiController
   def index
     @articles = Article.all
 
