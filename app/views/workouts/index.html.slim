@@ -5,13 +5,25 @@
   = link_to new_workout_path, class: 'ui circular icon button', style: 'margin-top: 10px; margin-left: 10px; display: inline-block;' do
     i.plus.icon
 
-  .ui.styled.accordion
-    - @workouts.each do |w|
-      .title
-        .dropdown.icon
-        = w.name
-      .content
-        .ui.dividing.header
-          = link_to w.name, workout_path(w)
-
-        = render('workouts/form', workout: w)
+  table.ui.table
+    thead
+      tr
+        th.collapsing
+        th Workout
+        th Tags
+        th.center.aligned Time
+        th.center.aligned Intensity
+    tbody
+      - @workouts.each do |w|
+        tr
+          td.collapsing
+            - if w.image_url.present?
+              = image_tag w.image_url, height: 20, width: 38.8
+          td
+            = link_to w.name, workout_path(w)
+          td
+            = w.tags.map(&:name).join(',')
+          td.center.aligned
+            = w.time
+          td.center.aligned
+            = w.intensity
