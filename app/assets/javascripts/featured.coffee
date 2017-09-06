@@ -7,6 +7,7 @@ class Featured
     console.log 'init: Featured'
 
     $('.ui.accordion').accordion()
+    $('.dropdown').dropdown()
 
 
 $(document).on 'turbolinks:load', ->

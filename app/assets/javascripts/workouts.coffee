@@ -7,6 +7,7 @@ class Workouts
     console.log 'init: Workouts'
 
     $('.ui.accordion').first().accordion()
+    $('.dropdown').dropdown()
 
 
 $(document).on 'turbolinks:load', ->
