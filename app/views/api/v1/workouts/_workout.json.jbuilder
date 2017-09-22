@@ -1,4 +1,6 @@
-json.extract! workout, :name, :time, :intensity, :description, :image_url, :featured
+json.extract! workout, :name, :time, :intensity, :description, :featured
+
+json.image_url workout.image_url(public: true)
 
 json.circuits workout.circuits, partial: 'api/v1/workouts/circuit', as: :circuit
 
